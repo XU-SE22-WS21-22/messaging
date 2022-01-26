@@ -6,8 +6,9 @@ services:
     volumes:
       - ./db:/docker-entrypoint-initdb.d
     environment:
-      MYSQL_ROOT_PASSWORD: cast
-      MYSQL_DATABASE: cast
-      MYSQL_PASSWORD: cast
+      - MYSQL_ROOT_PASSWORD=cast
+      - MYSQL_DATABASE=cast
+      - MYSQL_USER=cast
+      - MYSQL_PASSWORD=cast
     ports:
       - 3306:3306
