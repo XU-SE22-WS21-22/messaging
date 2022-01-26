@@ -1,0 +1,13 @@
+version: '2.0'
+
+services:
+  db:
+    image: mariadb
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: cast
+      MYSQL_DATABASE: cast
+      MYSQL_PASSWORD: cast
+    ports:
+      - 3306:3306
