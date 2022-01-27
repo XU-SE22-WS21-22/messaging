@@ -19,13 +19,13 @@ public class EmailService {
         {
             EmailService mail = new EmailService();
             mail.setupServerProperties();
-            mail.draftEmail("email@email.com","subject","message");
+            mail.draftEmail("opp97010@boofx.com","subject","message");
             mail.sendEmail();
         }
 
         private void sendEmail() throws MessagingException {
-            String fromUser = "pqr@gmail.com";  //We need a gmail account
-            String fromUserPassword = "*****";  //and a password
+            String fromUser = "noreplyg69420@gmail.com";  //We need a gmail account
+            String fromUserPassword = "sG3adif&63AKSd9*#jk";  //and a password
             String emailHost = "smtp.gmail.com";
             Transport transport = newSession.getTransport("smtp");
             transport.connect(emailHost, fromUser, fromUserPassword);
@@ -40,7 +40,7 @@ public class EmailService {
             String emailBody = body;
             mimeMessage = new MimeMessage(newSession);
 
-            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(emailRecipient));
+            mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(emailRecipient));
             mimeMessage.setSubject(emailSubject);
             MimeBodyPart bodyPart = new MimeBodyPart();
             bodyPart.setContent(emailBody,"html/text");
@@ -52,9 +52,11 @@ public class EmailService {
 
         private void setupServerProperties() {
             Properties properties = System.getProperties();
-            properties.put("mail.smtp.port", "547");
+            properties.put("mail.smtp.port", "587"); //547
             properties.put("mail.smtp.auth", "true");
+           // properties.put("mail.smtp.host", "smtp.gmail.com");
             properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
             newSession = Session.getDefaultInstance(properties,null);
         }
 
