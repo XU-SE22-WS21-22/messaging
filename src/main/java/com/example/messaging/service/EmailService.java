@@ -15,11 +15,11 @@ public class EmailService {
 
         Session newSession = null;
         MimeMessage mimeMessage = null;
-        public static void main(String args[]) throws AddressException, MessagingException, IOException
+        public static void EmailService(String recipient, String subject, String body) throws AddressException, MessagingException, IOException
         {
             EmailService mail = new EmailService();
             mail.setupServerProperties();
-            mail.draftEmail("opp97010@boofx.com","subject","message");
+            mail.draftEmail(recipient,subject,body);
             mail.sendEmail();
         }
 
