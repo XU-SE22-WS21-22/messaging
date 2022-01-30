@@ -53,4 +53,12 @@ CREATE TABLE Accounts (
 | Tobias Schildbach | t.schildbach@student.xu-university.de |
 | Tom Engelmann | t.engelmann@student.xu-university.de |
 
+
+## _Contributors Email Service_
+
+The email service takes in an email adress, a subject and a message, which will then send with a dedicated gmail the wanted email to the email adress.
+
+| Name | Email |
+| ---- | ----- |
+| Jonah Ising | j.ising@student.xu-university.de |
 ***
