@@ -1,4 +1,4 @@
-package com.example.messaging.dto;
+package com.example.messaging.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

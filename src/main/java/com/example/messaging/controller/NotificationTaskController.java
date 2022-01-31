@@ -14,13 +14,9 @@ public class NotificationTaskController {
 
     @GetMapping("/api/NotificationTasks")
     public ArrayList<NotificationTask> notification(@RequestParam(value = "userId") int userId) {
-
-       /*
-
-       TODO explain why this is like it is
-
+        /*
+            This function only represents a prototype/example implementation, as no actual implementation exists
         */
-
 
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DAY_OF_MONTH, 2);

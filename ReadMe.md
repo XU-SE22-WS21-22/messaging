@@ -1,8 +1,34 @@
-# ReadMe
+# CAST Notification Service Backend
+This repository contains a basic notification service for CAST.
+
+## Known Issues and Limitations / State of the Project
+
+Missing overall structure and implementation!  
+No connection to other services.  
+We are missing a working model and connection to real a database (no hosting was provided yet).  
+It is not possible to fetch data and no cron jobs that would trigger delivery are implemented. 
+
+## Usage
+
+1. Start DB with docker: `docker-compose up -d`
+2. Build and run with maven: `spring-boot:run`
+
+## Build docker image
+
+1. Build to jar with maven: `package`
+2. Build local docker image: `docker build -t cast/notification-backend:latest .`
+
+### _Contributors Docker_
+
+| Name             | Email |
+|------------------| ----- |
+| Philipp Liermann | p.liermann@student.xu-university.de |
 
 ***
 
-## _JPA_
+## Architecture / Documentation
+
+### _JPA_
 
 JPA (Java Persistence API) facilitates object-relational mapping
 to manage relational data in Java applications. It provides a
@@ -46,7 +72,7 @@ CREATE TABLE Accounts (
 );
 ```
 
-## _Contributors JPA_
+### _Contributors JPA_
 
 | Name | Email |
 | ---- | ----- |
@@ -54,7 +80,7 @@ CREATE TABLE Accounts (
 | Tom Engelmann | t.engelmann@student.xu-university.de |
 
 
-## _Contributors Email Service_
+### _Contributors Email Service_
 
 The email service takes in an email adress, a subject and a message, which will then send with a dedicated gmail the wanted email to the email adress.
 
@@ -63,31 +89,18 @@ The email service takes in an email adress, a subject and a message, which will 
 | Jonah Ising | j.ising@student.xu-university.de |
 ***
 
-## _API Routes_
+### _API Routes_
 
 The API route is responsible for returning outstanding assignments to the front end. It's reachable under "/api/NotificationTasks" and a request should be formated the following: "/api/NotificationTasks?userId=..." . The API routes sections consists out of two elements, one is the controller which is the request handler that initiates a new instance of the NotificationTask class. 
 
-```package com.example.messaging.controller;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
-import com.example.messaging.model.NotificationTask;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+```java
+package com.example.messaging.controller;
 
 @RestController
 public class NotificationTaskController {
 
     @GetMapping("/api/NotificationTasks")
     public ArrayList<NotificationTask> notification(@RequestParam(value = "userId") int userId) {
-
-       /*
-       TODO explain why this is like it is
-        */
-
 
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DAY_OF_MONTH, 2);
@@ -105,7 +118,7 @@ public class NotificationTaskController {
 }
 ```
 
-```
+```java
 package com.example.messaging.model;
 
 import java.util.Date;
@@ -125,51 +138,12 @@ public class NotificationTask {
         this.deadline = deadline;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Date getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
-    }
-
+    //...
 
 }
 ```
 
-## _Contributors API_
+### _Contributors API_
 
 | Name | Email |
 | ---- | ----- |
